@@ -19,10 +19,15 @@ get '/' do
 end
 
 get '/admin' do
+    @doctors = Doctor.all
   erb(:admin)
 end
 
 post '/admin' do
-
+  name = params["name"]
+  specialty = params["specialty"]
+  doctor = Doctor.new({:name => name, :specialty => specialty})
+  doctor.save
+  @doctors = Doctor.all
   erb(:admin)
 end

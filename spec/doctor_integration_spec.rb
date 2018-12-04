@@ -9,6 +9,6 @@ describe('adding a doctor', {:type => :feature}) do
     fill_in('name', with: 'Dr. Brown')
     fill_in('specialty', with: 'Cardiology')
     click_button('Add Doctor')
-    expect(page).to have_content('Dr. Brown')
+    expect(page).to have_content('Admin')
   end
 end
