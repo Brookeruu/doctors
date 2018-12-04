@@ -7,7 +7,6 @@ describe(Doctor) do
     end
   end
 
-
 #   describe('#save') do
 #   it('save a new doctor')
 #   doctor = Doctor.new(name, specialty)
