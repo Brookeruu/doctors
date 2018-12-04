@@ -21,3 +21,8 @@ end
 get '/admin' do
   erb(:admin)
 end
+
+post '/admin' do
+
+  erb(:admin)
+end
