@@ -1,4 +1,6 @@
 class Patient
+  attr_reader :name, :birthdate
+  
   def initialize(attributes)
     @name = attributes[:name]
     @birthdate = attributes[:birthdate]
@@ -17,5 +19,10 @@ class Patient
   end
 
   def save
+    DB.exec("INSERT INTO patients (name, birthdate) VALUES ('#{@name}', '#{@birthdate}')")
+  end
+
+  def ==(other)
+    @name == other.name && @birthdate == other.birthdate
   end
 end
