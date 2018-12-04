@@ -13,11 +13,32 @@
 
 <form class="form-group" action="/admin" method="post">
   <h4>Add new doctor:</h4>
-  <div class="add_doctor">
-    <label for="name">Name</label>
-    <input type="text" name="name" id="name">
+  <div class="add_person">
+    <label for="doc_name">Name</label>
+    <input type="text" name="doc_name" id="doc_name">
     <label for="specialty">Specialty</label>
     <input type="text" name="specialty" id="specialty">
   </div>
   <button type="submit" class="btn btn-success" name="button">Add Doctor</button>
+</form>
+
+<% if @patients.length > 0 %>
+  <%= '<h4>Patients</h4>' %>
+<% end %>
+
+<ul>
+  <% @patients.each do |patient| %>
+    <li>  <%= patient.name %> </li>
+  <% end %>
+</ul>
+
+<form class="form-group" action="/admin" method="post">
+  <h4>Add new patient</h4>
+  <div class="add_person">
+    <label for="pat_name">Name</label>
+    <input type="text" name="pat_name" id="pat_name">
+    <label for="birthdate">Birthdate</label>
+    <input type="text" name="birthdate" id="birthdate">
+    <button type="submit" class="btn btn-success" name="button">Add Patient</button>
+  </div>
 </form>

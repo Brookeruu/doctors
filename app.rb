@@ -7,26 +7,22 @@ require 'pry'
 require 'pg'
 require './spec/db_helper'
 
-# if @@testing
-#   DB = PG.connect({:dbname => "doctors_office_test"})
-# else
-#   DB = PG.connect({:dbname => "doctors_office"})
-# end
-
 get '/' do
   erb(:index)
 end
 
 get '/admin' do
     @doctors = Doctor.all
+    @patients = []
   erb(:admin)
 end
 
 post '/admin' do
-  name = params["name"]
+  doc_name = params["doc_name"]
   specialty = params["specialty"]
-  doctor = Doctor.new({:name => name, :specialty => specialty})
+  doctor = Doctor.new({:name => doc_name, :specialty => specialty})
   doctor.save
   @doctors = Doctor.all
+  @patients = []
   erb(:admin)
 end

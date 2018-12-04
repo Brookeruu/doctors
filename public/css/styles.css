@@ -20,11 +20,11 @@ h3 {
     display:inline-block;
   }
 
-  .add_doctor {
+  .add_person {
     display: grid;
     grid-template-columns: auto auto;
   }
 
-  .add_doctor > * {
+  .add_person > * {
     margin: 0.2em;
   }
