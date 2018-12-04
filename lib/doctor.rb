@@ -17,4 +17,7 @@ class Doctor
     end
     doctors
   end
+
+  def save
+  end 
 end
