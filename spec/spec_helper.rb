@@ -3,12 +3,16 @@ require 'patient'
 require 'pg'
 require 'rspec'
 require 'pry'
+require 'db_helper'
 
-DB = PG.connect({:dbname => "doctors_office_test"})
 
 RSpec.configure do |config|
+  config.before(:each) do
+    @@testing = true
+  end
   config.after(:each) do
     DB.exec("DELETE FROM doctors *")
     DB.exec("DELETE FROM patients *")
+    @@testing = false
   end
 end
