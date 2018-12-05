@@ -20,6 +20,16 @@ class Doctor
     doctors
   end
 
+  def self.find(id)
+    doctor = nil
+    row = DB.exec("SELECT * FROM doctors WHERE id = #{id}").first
+    if row
+      name = row["name"]
+      specialty = row["specialty"]
+      doctor = Doctor.new({:name => name, :specialty => specialty, :id => id})
+    end
+  end
+
   def save
     values = DB.exec("INSERT INTO doctors (name, specialty) VALUES ('#{@name}', '#{@specialty}') RETURNING id")
     @id = values.first['id'].to_i

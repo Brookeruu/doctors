@@ -10,7 +10,7 @@ end
 
 describe('#save') do
   it('saves a new patient') do
-    patient = Patient.new({:name => "Brooke", :birthdate => "1964-01-01", :id => nil})
+    patient = Patient.new({:name => "Brooke", :birthdate => "1964-01-01", :id => nil, :doctor_id => nil})
     patient.save
     expect(Patient.all).to eq([patient])
   end

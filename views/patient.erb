@@ -1,7 +1,8 @@
 <h2>Patient Details</h2>
 <a href="/admin">Back to Admin</a>
 <h3><%= @patient.name %></h3>
-<p><%= @patient.birthdate %></p>
+<p>Birthdate: <%= @patient.birthdate %></p>
+<p>Current Doctor: <%= @doctor_name %></p>
 
 <form class="form-group" action="/patients/<%= @patient.id %>" method="post">
   <h4>Assign a doctor:</h4>
@@ -13,5 +14,5 @@
   </select>
 
   </div>
-  <button type="submit" class="btn btn-success">Assign Doctor</button>
+  <button type="submit" class="btn btn-danger">Assign Doctor</button>
 </form>

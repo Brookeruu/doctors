@@ -38,14 +38,33 @@ end
 get '/patients/:id' do
   @patient = Patient.find(params[:id].to_i)
   @doctors = Doctor.all
+  @doctor_name = ""
+  if @patient.doctor_id
+    doctor = Doctor.find(@patient.doctor_id)
+    if doctor
+      @doctor_name = doctor.name
+    end
+  end
   erb(:patient)
 end
 
 post '/patients/:id' do
-  @patient = Patient.find(params[:id].to_i)
   doc_id = params["doc_id"].to_i
-  @patient.set_doctor_id(doc_id)
-  # @doctor = Doctor.find(doc_id)
+  patient = Patient.find(params[:id].to_i)
+  patient.set_doctor_id(doc_id)
+
+  @patient = Patient.find(params[:id].to_i)
   @doctors = Doctor.all
+  @doctor_name = ""
+  if @patient.doctor_id
+    doctor = Doctor.find(@patient.doctor_id)
+    if doctor
+      @doctor_name = doctor.name
+    end
+  end
   erb(:patient)
+end
+
+get '/doctor' do
+  erb(:doctor)
 end

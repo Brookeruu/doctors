@@ -1,10 +1,11 @@
 class Patient
-  attr_reader :name, :birthdate, :id
+  attr_reader :name, :birthdate, :id, :doctor_id
 
   def initialize(attributes)
     @name = attributes[:name]
     @birthdate = attributes[:birthdate]
     @id = attributes[:id]
+    @doctor_id = attributes[:doctor_id]
   end
 
   def self.all
@@ -14,7 +15,8 @@ class Patient
       name = row["name"]
       birthdate = row["birthdate"]
       id = row["id"].to_i
-      patient = Patient.new({:name => name, :birthdate => birthdate, :id => id})
+      doctor_id = row["doctor_id"].to_i
+      patient = Patient.new({:name => name, :birthdate => birthdate, :id => id, :doctor_id => doctor_id})
       patients.push(patient)
     end
     patients
@@ -24,7 +26,8 @@ class Patient
     row = DB.exec("SELECT * FROM patients WHERE id = #{id}").first
     name = row["name"]
     birthdate = row["birthdate"]
-    patient = Patient.new({:name => name, :birthdate => birthdate, :id => id})
+    doctor_id = row["doctor_id"].to_i
+    patient = Patient.new({:name => name, :birthdate => birthdate, :id => id, :doctor_id => doctor_id})
   end
 
   def save
