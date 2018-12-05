@@ -1,0 +1,17 @@
+<h2>Patient Details</h2>
+<a href="/admin">Back to Admin</a>
+<h3><%= @patient.name %></h3>
+<p><%= @patient.birthdate %></p>
+
+<form class="form-group" action="/patients/<%= @patient.id %>" method="post">
+  <h4>Assign a doctor:</h4>
+  <div class="add_person">
+    <select name="doc_id">
+      <% @doctors.each do |doctor| %>
+        <option value="<%= doctor.id %>"><%= doctor.name %></option>
+      <% end %>
+  </select>
+
+  </div>
+  <button type="submit" class="btn btn-success">Assign Doctor</button>
+</form>
